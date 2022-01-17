@@ -1,0 +1,8 @@
+create table employee(
+    eid int primary key auto_increment,
+    ename varchar(255) not null,
+    address varchar(255) not null,
+    salary int not null,
+    age int not null,
+    joindate date not null
+);

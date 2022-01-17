@@ -1,0 +1,44 @@
+{% extends "rrpartition/base.html" %} {% block content %} {% load static %}
+{% if alert %}
+<div class="alert alert-{{result}} alert-dismissible fade show" role="alert">
+  <strong>{{outcome}}!</strong> {{outcome_message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+<div class="row">
+    <div class="col-sm-4">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="input1">Employee ID</label>
+                <input type="number" class="form-control my-2" id="input1" name = "eid" min="1" value = "3">
+            </div>
+            <input type="submit" value="Search" name="action" class="btn btn-outline-success my-2">
+            <input type="submit" value="Home" name="action" class="btn btn-outline-success my-2">
+        </form>
+    </div>
+    <div class="col-sm-8">
+        {% if record %}
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Eid</th>
+                    <th scope="col">Ename</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">JoinDate</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    {% for i in record %}
+                        <td>{{i}}</td>
+                    {% endfor %}
+                </tr>
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
